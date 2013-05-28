@@ -12,6 +12,7 @@ feature 'Creating Passwords -' do
     page.should have_content('www.abc.com')
     page.should have_content('hacker')
     page.should have_content('password')
+    page.find_link("Back")[:href].should == root_path
   end
   
   scenario "Can not create a password without fields" do
@@ -22,5 +23,6 @@ feature 'Creating Passwords -' do
     page.should have_content("Url can't be blank")
     page.should have_content("Username can't be blank")
     page.should have_content("Password can't be blank")
+    page.current_url == new_password_url
   end
 end

@@ -1,3 +1,19 @@
 <h2>All Passwords</h2>
+<table>
+  <tr>
+    <th>URL</th>
+    <th>Username</th>
+    <th>Password</th>
+    <th>Commands</th>
+  </tr>
+  <% @passwords.each do |password| %>
+    <tr>
+      <td><%= password.url %></td>
+      <td><%= password.username %></td>
+      <td><%= password.password %></td>
+      <td></td>
+    </tr>
+  <% end -%>
+</table>
 
 <%= link_to "New Password", new_password_path %>
