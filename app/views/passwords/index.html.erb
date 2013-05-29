@@ -11,7 +11,10 @@
       <td><%= password.url %></td>
       <td><%= password.username %></td>
       <td><%= password.password %></td>
-      <td></td>
+      <td>
+        <%= link_to "Show", password_path(password) %>
+        <%= link_to "Edit", edit_password_path(password) %>
+      </td>
     </tr>
   <% end -%>
 </table>

@@ -1,4 +1,7 @@
 class PasswordsController < ApplicationController
+  
+  before_filter :find_password, :only => [:show, :edit, :update]
+
   def index
     @passwords = Password.all  
   end
@@ -19,7 +22,22 @@ class PasswordsController < ApplicationController
   end
 
   def show
-    @password = Password.find(params[:id])  
   end
 
+  def edit
+  end
+
+  def update
+    if @password.update_attributes(params[:password])
+      redirect_to @password, :notice => "Password has been updated."
+    else
+      flash[:notice] = "Password has not been updated."
+      render :action => "edit"
+    end
+  end
+
+  private
+    def find_password
+      @password = Password.find(params[:id])  
+    end
 end

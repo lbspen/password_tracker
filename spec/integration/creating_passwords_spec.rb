@@ -9,10 +9,6 @@ feature 'Creating Passwords -' do
     fill_in "Password", :with => "password"
     click_button 'Create Password'
     page.should have_content('Password was successfully created.')
-    page.should have_content('www.abc.com')
-    page.should have_content('hacker')
-    page.should have_content('password')
-    page.find_link("Back")[:href].should == root_path
   end
   
   scenario "Can not create a password without fields" do

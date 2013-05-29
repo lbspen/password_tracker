@@ -1,13 +1,3 @@
 <h2>Create New Password</h2>
 
-<%= form_for(@password) do |f| %>
-  <%= error_messages_for @password, :header_message => nil %>
-  <%= f.label :url %>
-  <%= f.text_field :url %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-  <%= f.label :password %>
-  <%= f.text_field :password %>
-  
-  <%= f.submit %>
-<% end -%>
+<%= render 'form' %>
