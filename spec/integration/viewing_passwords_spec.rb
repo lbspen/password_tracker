@@ -13,11 +13,15 @@ feature "Viewing passwords -" do
     page.should have_content(password.password)
     page.find_link("Show")[:href].should == password_path(password)
     page.find_link("Edit")[:href].should == edit_password_path(password)
+    page.find_link("Delete")[:href].should == password_path(password)
+    page.find_link("Delete").native["data-method"].should == "delete"
   end
 
   scenario "Viewing a single password" do
     click_link("Show")
     page.find_link("Back")[:href].should == root_path
     page.find_link("Edit")[:href].should == edit_password_path(password)
+    page.find_link("Delete")[:href].should == password_path(password)
+    page.find_link("Delete").native["data-method"].should == "delete"
   end
 end

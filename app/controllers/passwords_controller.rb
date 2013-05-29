@@ -1,6 +1,6 @@
 class PasswordsController < ApplicationController
   
-  before_filter :find_password, :only => [:show, :edit, :update]
+  before_filter :find_password, :only => [:show, :edit, :update, :destroy]
 
   def index
     @passwords = Password.all  
@@ -31,9 +31,15 @@ class PasswordsController < ApplicationController
     if @password.update_attributes(params[:password])
       redirect_to @password, :notice => "Password has been updated."
     else
-      flash[:notice] = "Password has not been updated."
+      flash[:alert] = "Password has not been updated."
       render :action => "edit"
     end
+  end
+
+  def destroy
+    @password.destroy
+    flash[:notice] = "Password has been deleted."
+    redirect_to passwords_path
   end
 
   private
