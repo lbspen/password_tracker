@@ -1,4 +1,6 @@
 PasswordTracker::Application.routes.draw do
+  devise_for :users
+
   root :to => "passwords#index"
 
   resources :passwords
